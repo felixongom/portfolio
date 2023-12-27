@@ -1,0 +1,761 @@
+@import "./partials/resets";
+@import "./partials/variables";
+@import "./partials/mixins";
+@import "./partials/dynamic";
+@import "./partials/icons";
+//
+body {
+  // scroll-behavior: smooth;
+  // overflow-x: hidden;
+}
+// navBar
+.navBar {
+  @include flex(row, space-between);
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0 10vw;
+  height: 60px;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+   backdrop-filter:blur(8px);
+  .Name {
+    padding: 0 10px;
+    font-size: 1.8rem;
+    color: var(--primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  .navBar_right-container {
+    ul {
+      @include flex(row, left);
+      gap: 5px;
+
+      li {
+        @include flex(column, center);
+        padding: 3px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 10px;
+
+        a {
+          color: var(--black1);
+        }
+        div {
+          width: 5px;
+          height: 5px;
+          background-color: var(--primary);
+          border-radius: 50%;
+          transform: scale(0);
+          transition: 0.5s;
+        }
+      }
+    }
+  }
+  .menue_wrapper {
+    background: var(--black1);
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    color: var(--white1);
+    border-radius: 50%;
+    position: relative;
+    display: none;
+
+    .menuIcon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.3);
+    }
+  }
+}
+.medium_navBar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: right;
+  position: fixed;
+  transform: translateX(100vw);
+  transition: 0.5s;
+  z-index: 10;
+
+  ul {
+    background-color: var(--white);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+    width: 70vw;
+    height: calc(100vh - 0px);
+    padding: 10px 1.5rem;
+    position: relative;
+
+    li {
+      padding: 10px 0px;
+      font-size: 1.4rem;
+    }
+    .closeNavbarIcon {
+      color: var(--black1);
+      font-size: 2rem;
+      position: absolute;
+      top: 0;
+      right: 10px;
+      cursor: pointer;
+    }
+  }
+}
+//app wrapper
+.socialIcons {
+  width: 1.5rem;
+  padding-left: 10px;
+  bottom: 0;
+  top: 20px;
+
+  .icons_Wrapper {
+    @include flex(column, center);
+    gap: 20px;
+    transform: translateY(-20px);
+    a {
+      @include flex(column, center);
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--white1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      background-color: var(--white);
+
+      .facebook {
+        color: slateblue;
+      }
+      .linkedin {
+        color: #888;
+      }
+      .email {
+        color: #e88;
+      }
+    }
+  }
+  .navSideDots {
+    gap: 10px;
+    a {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      transition: 0.2s;
+      color: transparent;
+    }
+  }
+}
+
+.social_iconFloater {
+  @include flex(column, flex-end);
+  position: relative;
+  bottom: 0;
+  height: 100vh;
+}
+.dotsFloater {
+  @include flex(column, flex-end);
+  position: relative;
+  bottom: 0;
+  height: 100vh;
+}
+//MainContainer
+.MainContainer {
+  padding-top: 60px;
+  flex: 1;
+}
+
+//Hero
+.innerContainer {
+  @include flex(row, space-evenly);
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
+  gap: 10px;
+
+  .helloMessege {
+    max-width: 15rem;
+    padding-top: 10px;
+    color: var(--black1);
+    font-weight: 300;
+
+    span {
+      background-color: var(--white);
+      margin-top: 10px;
+      border-radius: 5px;
+      max-width: 20rem;
+      padding: 2px 10px;
+      text-transform: capitalize;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    div {
+      background-color: var(--white);
+      margin-top: 10px;
+      border-radius: 5px;
+      max-width: 20rem;
+      padding: 2px 10px;
+      text-transform: capitalize;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .heroImage {
+    @include flex(column, center);
+    height: 100vh;
+    width: 23rem;
+    div {
+      height: 70%;
+      width: 100%;
+      padding: 20px;
+      background-color: white;
+      border-radius: 120px;
+      overflow: hidden;
+      border: 1px solid var(--primary);
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        transform: scale(1.15);
+      }
+    }
+  }
+
+  .favSocialIcons {
+    @include flex(column, flex-end);
+    width: 30%;
+    height: 100%;
+    gap: 100px;
+    position: relative;
+    .innerDiv {
+      @include flex(column, flex-end);
+      position: relative;
+      bottom: 60px;
+      gap: 20px;
+
+      .iconWrapper {
+        @include flex(column, center);
+        width: 60px;
+        height: 60px;
+        border-radius: 80%;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        font-size: 200%;
+        .herosass {
+          color: rgb(248, 8, 220);
+        }
+      }
+      .two {
+        width: 100px;
+        height: 100px;
+        transform: translateX(60px);
+        .heroandroid {
+          font-size: 70px;
+          color: lightgreen;
+        }
+      }
+      .three {
+        width: 80px;
+        height: 80px;
+        .heroreact {
+          color: rgb(0, 179, 255);
+        }
+      }
+    }
+  }
+}
+
+//About
+.aboutInner_container {
+  @include flex(column, center);
+  h1 {
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: 5rem;
+    text-transform: capitalize;
+    span {
+      color: var(--primary);
+      font-weight: 400;
+      padding-right: 5px;
+      font-weight: bold;
+    }
+  }
+  .aboutInnerContents {
+    @include flex(row, center);
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-bottom: 60px;
+    margin-top: -2.5rem;
+    padding-bottom: 5rem;
+
+    .aboutInnerContent {
+      @include flex(column, center);
+      width: 300px;
+      overflow: hidden;
+      padding: 10px;
+      border-radius: 15px;
+      scale: 0.95;
+      transition: 0.5s;
+      align-items: center;
+
+      &:hover {
+        scale: 1;
+        transition: 0.5s;
+        cursor: pointer;
+      }
+      img {
+        height: 70%;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+      h2 {
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: capitalize;
+        color: var(--black);
+        font-weight: bolder;
+        width: 100%;
+      }
+      .description {
+        width: 100%;
+        color: var(--black1);
+        font-weight: 500;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+// works
+.works {
+  @include flex(column, center);
+  padding: 2px 10px;
+  gap: 5px;
+  flex-wrap: wrap;
+
+  h1 {
+    padding-bottom: 10px;
+    font-size: 2rem;
+    text-transform: capitalize;
+    span {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+  }
+
+  .workHeading {
+    @include flex(row, center);
+    flex-wrap: wrap;
+    margin: 10px 0;
+    gap: 10px;
+    span {
+      background-color: var(--white);
+      padding: 2px 25px;
+      border-radius: 5px;
+      text-transform: capitalize;
+      cursor: pointer;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+      &:hover {
+        font-weight: bold;
+        background-color: var(--black);
+        color: white;
+      }
+    }
+  }
+
+  .worksContent {
+    @include flex(row, center);
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+    margin-top: 20px;
+
+    .wrapper {
+      width: 15rem;
+      background-color: var(--white);
+      border-radius: 10px;
+      transition: 0.3s;
+      height: 350px;
+      padding: 10px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      &:hover {
+        scale: 1.01;
+        transition: 0.3s;
+      }
+      .imagediv {
+        position: relative;
+        height: 65%;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 6px;
+        }
+        h2 {
+          position: absolute;
+          bottom: -2px;
+          left: 50%;
+          transform: translateX(-50%);
+          text-transform: uppercase;
+          font-weight: bold;
+          color: var(--black1);
+          background: var(--white);
+          padding: 1px 15px 1px;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          font-size: 14px;
+        }
+      }
+      .name {
+        width: 100%;
+        text-transform: capitalize;
+        text-align: center;
+        font-size: 15px;
+        padding: 10px 0px;
+        text-transform: capitalize;
+        color: var(--black);
+        font-weight: bold;
+        font-size: 18px;
+      }
+      p {
+        color: var(--black1);
+      }
+
+      &:hover .worksLinksContainer {
+        @include flex(row, space-evenly);
+        position: absolute;
+      }
+
+      .worksLinksContainer {
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100%;
+        display: none;
+
+        &:hover a:nth-child(1),
+        &:hover a:nth-child(2) {
+          transform: translateX(0px);
+          transition: 0.5s;
+        }
+        a {
+          @include flex(row, center);
+          background-color: var(--white);
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 50%;
+
+          &:nth-child(1) {
+            transform: translateX(-500px);
+            color: var(--secondary);
+          }
+          &:nth-child(2) {
+            transform: translateX(500px);
+            color: var(--primary);
+          }
+        }
+      }
+    }
+  }
+}
+
+// SkillsInnerContainer
+.skillsInnerContainer {
+  padding-top: 10px;
+  width: 100%;
+  h1 {
+    color: var(--black);
+    font-size: 3rem;
+    text-transform: capitalize;
+    text-align: center;
+    span {
+      color: var(--primary);
+    }
+  }
+
+  .innnerContaier {
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    
+    .skills {
+      padding: 10px;
+      gap: 20px;
+      width: 50%;
+      flex-wrap: wrap;
+      display: flex;
+
+      .content {
+        text-align: center;
+        height: 8rem;
+
+        .title {
+          width: 100%;
+          text-align: center;
+          font-weight: bold;
+          color: var(--black1);
+          text-transform: capitalize;
+          font-size: 11px;
+          padding-top: 8px;
+        }
+      }
+
+      .skillIcon {
+        @include flex(row, center);
+        height: 80px;
+        width: 80px;
+        background-color: var(--white1);
+        border-radius: 50%;
+        font-size: 2rem;
+        color: tomato;
+        transition: 0.3s;
+
+        &:hover {
+          scale: 1.2;
+          transition: 0.3s;
+          cursor: pointer;
+        }
+      }
+    }
+    //
+    .expirience {
+      @include flex(column, flex-start);
+      display: flex;
+      width: 50%;
+      height: 100%;
+      margin-top: 10px;
+      align-items: flex-start;
+
+      .single_expirience {
+        flex: 1;
+        display: flex;
+        gap: 50px;
+        margin-bottom: 30px;
+        position: relative;
+        width: 100%;
+
+        .year {
+          font-size: 16px;
+          font-weight: bold;
+          color: var(--secondary);
+        }
+        .expirienceBodyContainer {
+          flex: 1;
+
+          .expirienceBody {
+            position: relative;
+            margin-bottom: 30px;
+            width: 100%;
+            cursor: pointer;
+
+            h2 {
+              font-size: 16px;
+              font-weight: bold;
+              color: var(--black);
+              text-transform: capitalize;
+            }
+            p {
+              color: var(--black1);
+            }
+            .description {
+              position: absolute;
+              min-width: 0rem;
+              max-width: 20rem;
+              left: 10%;
+              top: 10px;
+              padding: 5px 10px;
+              border-radius: 6px;
+              border: 1px solid var(--white1);
+              background: var(--white);
+              display: none;
+              transition: 0.3s;
+              color: var(--black1);
+            }
+            &:hover .description {
+              display: block;
+              transition: 0.3s;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+              z-index: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//Testimonial
+.innerTestimonialContainer{
+  @include flex(column, center);
+  width: 100%;
+
+  h3{
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    color: var(--black);
+    span{
+      color: var(--primary);
+    }
+  }
+  .textimaonialContent{
+    @include flex(column, center);
+    width: 100%;
+    margin-top: 40px;
+    gap: 10px;
+    .contentCard{
+      @include flex(row, flex-start);
+      gap: 20px;
+      background:var(--white);
+      width: 70%;
+      border-radius: 15px;
+      padding: 30px;
+
+      img{
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        border: 5px solid var(--white1);
+      }
+      .detailsContainer{
+        height: 100%;
+        p{
+          margin-bottom:25px ;
+          font-weight: 500;
+          color: var(--black1);
+          font-size: 17px;
+        }
+        h2{
+          color: var(--secondary);
+          font-weight: bold;
+          text-transform: capitalize;
+
+        }
+        h5{
+          color: var(--black1);
+          font-size: 12px;
+          text-transform: capitalize;
+          font-weight: bold;
+
+        }
+      }
+    }
+    .control{
+      @include flex(row, center);
+      gap: 2rem;
+      
+      div{
+        @include flex(row, center);
+        background:var(--white) ;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        cursor: pointer;
+        color: var(--black1);
+        font-size: 1.5rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: .3s;
+        &:hover{
+          background: var(--secondary);
+          color: var(--white1);
+          transition: .3s;
+        }
+
+      }
+    }
+  }
+  
+}
+
+// contact
+.conyactContaine{
+  @include flex(column, center);
+  gap: 25px;
+  
+  h1{
+    margin-top:10px ;
+    font-size: 2.2rem;
+    text-transform: capitalize;
+    color: var(--black);
+    
+    span{
+      color: var(--primary);
+    }
+  }
+  
+  .contactForm{
+    @include flex(column, center);
+    padding-bottom: 2rem;
+    width: 100%;
+    .contactMethod{
+      @include flex(row, center);
+      gap:2rem;
+      width: 80%;
+      margin-bottom: 2rem;
+      div{
+        @include flex(row, flex-start);
+        padding: 10px 10px;
+        border-radius: 10px;
+        background: rgb(255, 243, 241);
+        gap: 10px;
+        font-weight: bold;
+        width: 20rem;
+
+        .icon{
+          color: tomato;
+          font-size: 2rem;
+        }
+        span{
+          color: var(--black1);
+          font-size: 14px;
+          
+        }
+      }
+      .phone{
+        background: var(--white1);
+        .icon{
+          color: var(--primary);
+        }
+      }
+
+    }
+    .Form{
+     width: 50%;
+     margin-top: 25px;
+     @include flex(column, center);
+      gap: 20px;
+     input, textarea{
+      background-color: var(--white1);
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      caret-color: var(--secondary);
+
+     }
+     textarea{
+      height: 8rem;
+     }
+     .loader, .button{
+      @include flex(row, center);
+      background: var(--secondary);
+      width: 100%;
+      padding: 8px 0;
+      text-transform: capitalize;
+      border-radius: 5px;
+      color: var(--white1);
+      text-align: center;
+      font-size: 1.5rem;
+     }
+     .button{
+      font-size: 16px;
+      font-weight: bold;
+     }
+     
+    }
+  }
+
+}
+

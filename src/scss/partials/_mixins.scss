@@ -1,0 +1,13 @@
+@mixin flex ($direction, $justify){
+    display: flex;
+    align-items: center;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+@mixin media ($size){
+    @media (max-width:$size){
+       @content   
+    }
+}
+
