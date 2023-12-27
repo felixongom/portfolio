@@ -13,8 +13,7 @@ function Hero() {
           <motion.div
             whileInView={{opacity:[0, 1]}}
             >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quasi
-            amet dignissimos porro illo  dolorem.
+            I just want to inform you that beautiful design makes beautiful work entirely.
           </motion.div>
         </div>
         <div className="heroImage">
